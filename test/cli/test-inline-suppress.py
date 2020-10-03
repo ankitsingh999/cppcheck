@@ -27,5 +27,7 @@ def test_unmatched_suppression_path_with_extra_stuf():
 
 def test_backwards_compatibility():
     ret, stdout, stderr = cppcheck(['--inline-suppr', '--enable=unusedFunction', 'proj-inline-suppress/3.cpp'])
-    assert ret == 0
+    assert stderr != ''
+
+    ret, stdout, stderr = cppcheck(['--inline-suppr', '--enable=unusedFunction', 'proj-inline-suppress/3.cpp'])
     assert stderr == ''
